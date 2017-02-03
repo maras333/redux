@@ -79,6 +79,39 @@ describe('todos reducer', () => {
     ])
   })
 
+  it('should handle REMOVE_TODO', () => {
+    expect(
+      todos([
+        {
+          text: 'Run the tests',
+          completed: false,
+          id: 0
+        }, {
+          text: 'Use Redux',
+          completed: true,
+          id: 1
+        }, {
+         text: 'Fix the tests',
+         completed: true,
+         id: 2
+       }
+      ], {
+        type: 'REMOVE_TODO',
+        id: 1
+      })
+    ).toEqual([
+      {
+        text: 'Run the tests',
+        completed: false,
+        id: 0
+      }, {
+        text: 'Fix the tests',
+        completed: true,
+        id: 2
+      },
+    ])
+  })
+
   it('should handle TOGGLE_TODO', () => {
     expect(
       todos([
@@ -107,5 +140,7 @@ describe('todos reducer', () => {
       }
     ])
   })
+
+
 
 })
